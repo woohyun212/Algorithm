@@ -2,7 +2,6 @@ import sys
 
 while True:
     try:
-
         n = input()
         if n == "":
             break
