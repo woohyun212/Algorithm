@@ -27,8 +27,8 @@ for height in range(highest, -1, -1):
         ans_time = time
         ans_height = height
     else:
-        continue
-        # break
+        # continue
+        break
 print(ans_time, ans_height)
 
 """
