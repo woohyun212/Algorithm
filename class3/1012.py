@@ -4,31 +4,32 @@ sys.setrecursionlimit(50*2500)
 
 
 def moveField(x, y):
-    if (x, y) in visited:
+    if (x, y) in visited:  # 방문 했다면 종료
         return
-    visited.add((x, y))
-    for direction in directions:
+    visited.add((x, y))  # 아니면 방문한 노드에 추가
+    for direction in directions:  # 주변 노드 탐색
         nx, ny = x+direction[0], y+direction[1]
+        #  주변 노드가 양배추가 있는 노드면서, 방문하지 않았다면
         if (nx, ny) in cabbages and (nx, ny) not in visited:
-            moveField(nx, ny)
+            moveField(nx, ny)  # 해당 노드로 이동
         else:
             continue
-    return
-
 
 directions = [(0, 1), (1, 0), (-1, 0), (0, -1)]
 for case in range(int(input())):
     count = 0
     M, N, K = map(int, input().split())
+    # 양배추 x,y 좌표
     cabbages = {tuple(map(int, input().split())) for _ in range(K)}
-    visited = set({})
-    for x, y in cabbages:
-        if (x, y) in visited:
+    visited = set({})  # 방문한 좌표
+    for x, y in cabbages:  # 양배추가 있는 좌표를 가져옴
+        if (x, y) in visited:  # 방문했다면 넘기기
             continue
-        else:
-            moveField(x, y)
-            count += 1
+        else:  # 방문 안했으면
+            moveField(x, y)  # 해당 밭(노드)으로 이동
+            count += 1  # 인접 노드 수색을 다했다면 지렁이 개수 1증가
     print(count)
+    
 
 """
 dfs를 잘못생각하고있었던 것 같다.
