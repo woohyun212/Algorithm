@@ -14,6 +14,8 @@ def moveField(x, y):
             moveField(nx, ny)  # 해당 노드로 이동
         else:
             continue
+    return  # 다 찾았으면 종료
+
 
 directions = [(0, 1), (1, 0), (-1, 0), (0, -1)]
 for case in range(int(input())):
@@ -29,7 +31,7 @@ for case in range(int(input())):
             moveField(x, y)  # 해당 밭(노드)으로 이동
             count += 1  # 인접 노드 수색을 다했다면 지렁이 개수 1증가
     print(count)
-    
+
 
 """
 dfs를 잘못생각하고있었던 것 같다.
